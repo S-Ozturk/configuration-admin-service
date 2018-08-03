@@ -13,7 +13,9 @@ import javax.swing.text.Element;
 import javax.swing.text.Position;
 import javax.swing.text.Segment;
 
+import org.hybrit.carbonite.configurationadminservice.modeller.AssetVersionModeller;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -32,19 +34,18 @@ public class AssetController {
 		for(Asset a : repository.findAll()) {
 			System.out.println(a);
 		};
-	    return "get some asset";
+	    return "get some asset is working";
 	}
 	
-	/*@RequestMapping(value = "/add", method = RequestMethod.GET)
+	@RequestMapping(value = "/{assetId}", method = RequestMethod.GET)
 	@ResponseBody
-	public String addAssets() {
-		repository.save(new Asset("mapping","rule", "a",  "a", "a"));
-	    return "added an asset";
-	}*/
+	public Asset getAsset(@PathVariable String assetId) {	
+		return null;
+	}
 	
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	@ResponseBody
-	public String addAssets() {
+	public String addHardCodedAssets() {
 		AssetVersionModeller objectId = new AssetVersionModeller("idTest","0.0.1");
 		AssetVersionModeller mapping = new AssetVersionModeller("mappingTest","0.0.1");
 		AssetVersionModeller rule = new AssetVersionModeller("ruleTest","0.0.1");
@@ -69,6 +70,7 @@ public class AssetController {
 	@RequestMapping(value = "/", method = RequestMethod.POST)
 	@ResponseBody
 	public Asset addAssetByPost(@RequestBody Asset asset) {
+		return repository.save(asset);
 		/*Asset temp = new Asset();
 		if(asset.getObjectId() != null) temp.setObjectId(asset.getObjectId());
 		if(asset.getMapping() != null) temp.setMapping(asset.getMapping());
@@ -76,7 +78,6 @@ public class AssetController {
 		if(asset.getCategories() != null) temp.setCategories(asset.getCategories());
 		if(asset.getDestinations() != null) temp.setDestinations(asset.getDestinations());
 		if(asset.getAssets()!= null) temp.setAssets(asset.getAssets());*/
-		return repository.save(asset);
 	    //return temp;
     }
 	

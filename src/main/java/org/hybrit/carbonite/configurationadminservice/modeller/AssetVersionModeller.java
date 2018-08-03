@@ -1,4 +1,4 @@
-package org.hybrit.carbonite.configurationadminservice.asset;
+package org.hybrit.carbonite.configurationadminservice.modeller;
 
 public class AssetVersionModeller {
 	
