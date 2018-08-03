@@ -12,7 +12,7 @@ import org.springframework.data.annotation.Id;
 public class Asset {
 	
 	
-	private AssetVersionModeller objectId;
+	private AssetVersionModeller id;
 	private AssetVersionModeller mapping;
 	private AssetVersionModeller rule;
 	
@@ -36,8 +36,8 @@ public class Asset {
         this.assets = assets;
     }*/
 
-    public Asset(AssetVersionModeller objectId, AssetVersionModeller mapping, AssetVersionModeller rule, ArrayList<String>  categories, ArrayList<String>  destinations, ArrayList<String>  assets) {
-    	this.objectId = objectId;
+    public Asset(AssetVersionModeller id, AssetVersionModeller mapping, AssetVersionModeller rule, ArrayList<String>  categories, ArrayList<String>  destinations, ArrayList<String>  assets) {
+    	this.id = id;
         this.mapping = mapping;
         this.rule = rule;
         this.categories = categories;
@@ -49,15 +49,15 @@ public class Asset {
     public String toString() {
         return String.format(
                 "Asset[objectId={ '%s' , '%s' } mapping={ '%s' , '%s' }, rule={ '%s' , '%s' }, categories='%s', destinations='%s', assets='%s']",
-                objectId.getName(), objectId.getVersion(), mapping.getName(), mapping.getVersion(), rule.getName(), rule.getVersion(), categories,destinations,assets);
+                id.getName(), id.getVersion(), mapping.getName(), mapping.getVersion(), rule.getName(), rule.getVersion(), categories,destinations,assets);
     }
 
 	public AssetVersionModeller getObjectId() {
-		return objectId;
+		return id;
 	}
 
-	public void setObjectId(AssetVersionModeller objectId) {
-		this.objectId = objectId;
+	public void setObjectId(AssetVersionModeller id) {
+		this.id = id;
 	}
 
 	public AssetVersionModeller getMapping() {
